@@ -1,9 +1,11 @@
-#outer-dropzone {
-    height: 190px;
+#correct-dropzone {
+    height: 200px;
+    width: 200px;
 }
 
-#inner-dropzone {
-    height: 80px;
+#wrong-dropzone {
+    height: 200px;
+    width: 200px;
 }
 
 .dropzone {
@@ -45,4 +47,8 @@
 .drag-drop.can-drop {
     color: #000;
     background-color: #4e4;
+}
+
+.animate-transform {
+    transition: transform 0.5s;
 }

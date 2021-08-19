@@ -45,7 +45,28 @@ function Drag() {
         event.relatedTarget.textContent = 'Dragged out'
         },
         ondrop: function (event) {
-        event.relatedTarget.textContent = 'Dropped'
+            var target = event.dragEvent.currentTarget
+            // translate the element
+
+            if (event.target.id === 'wrong-dropzone') {
+                target.classList.add('animate-transform')
+                setTimeout(()=>{
+                    target.classList.remove('animate-transform')
+                }, 0.5)
+                target.style.transform = 'translate(0px,0px)'
+                target.setAttribute('data-x', 0)
+                target.setAttribute('data-y', 0)
+                
+                event.target.classList.remove('drop-target')
+                event.relatedTarget.classList.remove('can-drop')
+                event.relatedTarget.textContent = 'Dragged out'
+            } else {
+                target.remove();
+            }
+            
+        
+            //event.relatedTarget.parentNode.removeChild(event.relatedTarget)
+           
         },
         ondropdeactivate: function (event) {
         // remove active dropzone feedback
@@ -72,10 +93,14 @@ function Drag() {
         <div className="Drag">
             <div id="no-drop" className="drag-drop"> #no-drop </div>
             <div id="yes-drop" className="drag-drop"> #yes-drop </div>
-            <div id="outer-dropzone" className="dropzone">
-                #outer-dropzone
-                <div id="inner-dropzone" className="dropzone">#inner-dropzone</div>
-            </div>
+            <div id="yes-drop" className="drag-drop"> #yes-drop </div>
+            <div id="yes-drop" className="drag-drop"> #yes-drop </div>
+            <div id="yes-drop" className="drag-drop"> #yes-drop </div>
+            <div id="yes-drop" className="drag-drop"> #yes-drop </div>
+            <div id="yes-drop" className="drag-drop"> #yes-drop </div>
+            <div id="yes-drop" className="drag-drop"> #yes-drop </div>
+            <div id="correct-dropzone" className="dropzone"> #correct-dropzone</div>
+            <div id="wrong-dropzone" className="dropzone"> #wrong-dropzone</div>
         </div>
     );
 }
